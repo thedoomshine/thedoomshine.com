@@ -5,11 +5,11 @@
         <h1 class="serif page-intro">
           Hi, my name is
           <span class="name">Morgan</span>&#32;<span class="name">Ashly</span>,
-          <br>and I am a front end developer with a passion for design, punk rock, and cats.
+          <br>and I am a software engineer with a passion for design, punk rock, and cats.
         </h1>
 
         <div class="page-info">
-          <p>I&rsquo;m currently a software engineer at <styled-link href="https://the-wing.com">The Wing</styled-link>.</p>
+          <p>I&rsquo;m currently working at <styled-link href="https://the-wing.com">The Wing</styled-link>.</p>
           <p>Before that I worked at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link>.</p>
         </div>
 
@@ -28,14 +28,14 @@
 </template>
 
 <script>
-import Link from './components/Link.vue';
+import Link from './components/Link.vue'
 
 export default {
   name: 'app',
   components: {
-    StyledLink: Link,
-  },
-};
+    StyledLink: Link
+  }
+}
 </script>
 
 <style lang="scss">
@@ -116,16 +116,6 @@ h1, h2, h3 {
 
 ul {
   list-style: none;
-}
-
-.footer {
-  align-items: center;
-  color: $black;
-  display: flex;
-  flex: 0 0 auto;
-  flex-direction: column;
-  margin-top: auto;
-  padding: 1rem 0;
 }
 
 .container {
@@ -232,7 +222,6 @@ ul {
 @media (max-width: 768px) {
   .main {
     box-shadow: none;
-    margin-top: 0;
     max-width: calc(100% - 2rem);
     width: 30rem;
   }

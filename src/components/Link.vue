@@ -1,21 +1,21 @@
 <template>
-  <a :href="href" target="_blank" rel="noreferrer noopener"><slot/></a>
+  <a :href="href" target="_blank" rel="noreferrer noopener"><slot /></a>
 </template>
 
 <script>
 export default {
   name: 'Link',
   props: {
-    href: String,
-  },
-};
+    href: String
+  }
+}
 </script>
 
 <style lang="scss">
 $black: #161616;
-$grey: #333A3D;
-$accent: #FFE374;
-$white: #F7F7F7;
+$grey: #333a3d;
+$accent: #ffe374;
+$white: #f7f7f7;
 
 a {
   color: $accent;
@@ -26,11 +26,11 @@ a {
   &::before {
     background-color: $accent;
     bottom: -2px;
-    content: '';
+    content: "";
     height: 1px;
     left: -1%;
     position: absolute;
-    transition: all .32s ease-out;
+    transition: all 0.32s ease-out;
     width: 0;
   }
 
