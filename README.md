@@ -1,4 +1,4 @@
-# morgan.codes
+# thedoomshine.com
 a portfolio website
 
 ## Project setup
