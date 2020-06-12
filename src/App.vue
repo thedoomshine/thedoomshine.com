@@ -9,8 +9,9 @@
         </h1>
 
         <div class="page-info">
-          <p>I&rsquo;m currently working at <styled-link href="https://the-wing.com">The Wing</styled-link>.</p>
-          <p>Before that I worked at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link>.</p>
+          <p>I&rsquo;m currently working at <styled-link href="https://www.voxmedia.com/a/vm">Vox Media</styled-link></p>
+          <p>Before that I worked at <styled-link href="https://the-wing.com">The Wing</styled-link></p>
+          <p>I also worked at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link>.</p>
         </div>
 
         <div class="page-links">
@@ -18,8 +19,7 @@
           <ul>
             <li><styled-link href="https://github.com/thedoomshine">Github</styled-link></li>
             <li><styled-link href="https://twitter.com/thedoomshine">Twitter</styled-link></li>
-            <li><styled-link href="https://instagram.com/thedoomshine">Instagram</styled-link></li>
-            <li><styled-link href="https://mommiedearest.bandcamp.com">Bandcamp</styled-link></li>
+            <li><styled-link href="mailto:morganashly@pm.me">Email</styled-link></li>
           </ul>
         </div>
       </div>
