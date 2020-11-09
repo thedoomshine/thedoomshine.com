@@ -5,11 +5,12 @@
         <h1 class="serif page-intro">
           Hi, my name is
           <span class="name">Morgan</span>&#32;<span class="name">Ashly</span>,
-          <br>and I am a software engineer with a passion for design, punk rock, and cats.
+          <br>and I am a Senior UI Engineer with a passion for design, punk rock, and cats.
         </h1>
 
         <div class="page-info">
-          <p>I worked at <styled-link href="https://the-wing.com">The Wing</styled-link></p>
+          <p>I work at <styled-link href="https://voxmedia.com/">Vox</styled-link>
+          <p>I used to work at <styled-link href="https://the-wing.com">The Wing</styled-link></p>
           <p>I also worked at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link></p>
         </div>
 
