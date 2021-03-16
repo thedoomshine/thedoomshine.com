@@ -5,32 +5,38 @@
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta content="Front End Web Software Engineer from Brooklyn" name="description">
     <meta content="#262626" name="theme-color">
-    <meta content="<%= BASE_URL %>" property="og:url">
+    <meta content="%PUBLIC_URL%/" property="og:url">
     <meta content="website" property="og:type">
     <meta content="Morgan Ashly" property="og:title">
     <meta content="Front End Web Software Engineer from Brooklyn" property="og:description">
-    <meta content="<%= BASE_URL %>opengraph.png" property="og:image">
+    <meta content="%PUBLIC_URL%/opengraph.png" property="og:image">
     <meta content="en_US" property="og:locale">
     <meta content="1114145045397667" property="fb:app_id">
     <meta content="summary" name="twitter:card">
     <meta content="@thedoomshine" name="twitter:site">
-    <meta content="<%= BASE_URL %>" name="twitter:url">
+    <meta content="%PUBLIC_URL%/" name="twitter:url">
     <meta content="Morgan Ashly" name="twitter:title">
     <meta content="Front End Web Software Engineer from Brooklyn" name="twitter:description">
-    <meta content="<%= BASE_URL %>twittercard.png" name="twitter:image">
+    <meta content="%PUBLIC_URL%/twittercard.png" name="twitter:image">
     <meta content="nositelinkssearchbox" name="google">
     <meta content="US-NY" name="geo.region">
     <meta content="Brooklyn" name="geo.placename">
     <title>Morgan Ashly | Software Engineer</title>
-    <link rel="shortcut icon" type="image/png" href="<%= BASE_URL %>favicon.png"/>
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700|Playfair+Display:400i,600i,900i" rel="stylesheet">
+    <link rel="preload" rel="shortcut icon" type="image/png" href="%PUBLIC_URL%/favicon.png"/>
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,700|Playfair+Display:400i,600i,900i" rel="stylesheet">
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but thedoomshine.com doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app">
-</div>
-    <!-- built files will be auto injected -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
