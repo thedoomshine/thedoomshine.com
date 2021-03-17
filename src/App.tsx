@@ -1,12 +1,16 @@
-import React from 'react'
-import { Global } from '@emotion/react'
-import './App.css';
+import React, { Fragment} from 'react'
+import { Global, ThemeProvider } from '@emotion/react'
+
+import { HomePage } from '~/views'
 
 function App() {
   return (
-    <div className="App">
-      <Global />
-    </div>
+    <Fragment>
+      <Global styles={{}} />
+      <ThemeProvider>
+
+      </ThemeProvider>
+    </Fragment>
   );
 }
 

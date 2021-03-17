@@ -5,11 +5,7 @@
       "dom",
       "dom.iterable",
       "esnext",
-      
     ],
-    "linterOptions": {
-      "exclude": ["./node_modules/**"],
-    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
