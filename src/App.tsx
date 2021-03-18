@@ -1,17 +1,14 @@
-import React, { Fragment} from 'react'
-import { Global, ThemeProvider } from '@emotion/react'
+import React from 'react'
 
-import { HomePage } from '~/views'
+import { ThemeProvider } from './theme'
+import { HomePage } from './views'
 
-function App() {
+export const App = () => {
   return (
-    <Fragment>
-      <Global styles={{}} />
+    <>
       <ThemeProvider>
-
+        <HomePage />
       </ThemeProvider>
-    </Fragment>
-  );
+    </>
+  )
 }
-
-export default App;

@@ -1,47 +1,77 @@
-import { css } from '@emotion/react'
-import { rgba } from 'emotion-rgba'
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react'
+import React, { useLayoutEffect, useMemo, useState } from 'react'
+import { useColorScheme } from 'use-color-scheme'
 
-import { getCSSVariables } from './variables'
+import { ThemeModeContext } from './context'
+import { GlobalTheme } from './global'
+import { ThemeModeType } from './types.d'
+import {
+  baseVariables,
+  getCSSVariables,
+  getThemeVariables,
+  theme,
+} from './variables'
 
-import { fluidType } from '~/services'
+const themeModes = {
+  light: {
+    colors: {
+      accent: theme.colors.yellow,
+      primary: theme.colors.black,
+      background: theme.colors.white,
+    },
+  },
+  dark: {
+    colors: {
+      accent: theme.colors.yellow,
+      primary: theme.colors.white,
+      background: theme.colors.black,
+    },
+  },
+}
 
-const MIN_WIDTH = `320px`
-const MAX_WIDTH = `1280px`
-const MIN_FONT_SIZE = `16px`
-const MAX_FONT_SIZE = `24px`
+const getThemeMode = (mode: ThemeModeType) => {
+  switch (mode) {
+    case 'light':
+      return { ...theme, ...themeModes.light }
+    case 'dark':
+    default:
+      return { ...theme, ...themeModes.dark }
+  }
+}
 
-export const variables = css`
-  :root {
-    ${getCSSVariables()}
-  }
-`
-export const reset = css`
-  *,
-  *:after,
-  *:before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  *::selection {
-    background-color: ${rgba(``, 0.75)};
-    color: $black;
-  }
-  html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    ${fluidType(MIN_WIDTH, MAX_WIDTH, MIN_FONT_SIZE, MAX_FONT_SIZE)}
-  }
-  body {
-    font-family: var(--font-mono);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5;
-  }
-  h1, h2, h3 {
-    letter-spacing: 1px;
-  }
-  ul {
-    list-style: none;
-  }
-`
+export const ThemeProvider: React.FC = ({ children }) => {
+  const { scheme } = useColorScheme()
+  const [themeMode, setThemeMode] = useState<ThemeModeType>(scheme)
+
+  const themeObject = useMemo(
+    () => ({
+      ...baseVariables,
+      colors: {
+        ...baseVariables.colors,
+        ...getThemeMode(themeMode).colors,
+      },
+    }),
+    [themeMode]
+  )
+
+  useLayoutEffect(() => {
+    const themeVars = getCSSVariables(themeObject)
+    Object.entries(themeVars).map(([key, value]) => {
+      document.documentElement.style.setProperty(key, value as string)
+    })
+  }, [themeObject, themeMode])
+
+  const activeTheme = useMemo(() => getThemeVariables(themeObject), [
+    themeObject,
+  ])
+  const value = useMemo(() => [themeMode, setThemeMode], [themeMode])
+
+  return (
+    <EmotionThemeProvider theme={activeTheme}>
+      <ThemeModeContext.Provider value={value}>
+        <GlobalTheme />
+        {children}
+      </ThemeModeContext.Provider>
+    </EmotionThemeProvider>
+  )
+}

@@ -1,26 +1,34 @@
-import { CSSObject } from '@emotion/react';
-
+import { Variable } from '../types.d'
 import { breakpoints } from './breakpoints'
 import { colors } from './colors'
 import { fonts } from './fonts'
-import { VariableType } from '../types'
 
-const createCSSVariable = (obj: {} | CSSObject) => {
-  const variableTypes: VariableType = Object.assign({}, { breakpoints, colors, fonts })
+export const baseVariables = { breakpoints, colors, fonts }
 
-  for (const [key, variableType] of Object.entries(variableTypes)) {
-    for (const [name, value] of Object.entries(variableType)) {
-      obj[`--${key}-${name}`] = value
-    }
-  }
-} 
+const getPrefix = (index: string, key: string) => `--${index}-${key}`
 
-export const getVariables = () => {
-  const variables: {[key: string]: string} = {};
-  return createCSSVariable(variables)
+export const getCSSVariables = (object = baseVariables) => {
+  const cssVariables: Variable = {}
+
+  Object.entries(object).map(([index, group]) => {
+    Object.entries(group).map(([key, value]) => {
+      cssVariables[getPrefix(index, key)] = value
+    })
+  })
+
+  return cssVariables
 }
 
-export const getCSSVariables = () => {
-  const cssVariables: CSSObject = {};
-  return createCSSVariable(cssVariables)
+export const getThemeVariables = (object = baseVariables) => {
+  const variables: Variable = {}
+
+  Object.entries(object).map(([index, group]) => {
+    Object.keys(group).map(key => {
+      variables[key] = `var(${getPrefix(index, key)})`
+    })
+  })
+
+  return variables
 }
+
+export const theme = baseVariables
