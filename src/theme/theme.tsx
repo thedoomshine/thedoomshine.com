@@ -5,12 +5,7 @@ import { useColorScheme } from 'use-color-scheme'
 import { ThemeModeContext } from './context'
 import { GlobalTheme } from './global'
 import { ThemeModeType } from './types.d'
-import {
-  baseVariables,
-  getCSSVariables,
-  getThemeVariables,
-  theme,
-} from './variables'
+import { getCSSVariables, getThemeVariables, theme } from './variables'
 
 const themeModes = {
   light: {
@@ -32,10 +27,10 @@ const themeModes = {
 const getThemeMode = (mode: ThemeModeType) => {
   switch (mode) {
     case 'light':
-      return { ...theme, ...themeModes.light }
+      return { ...themeModes.light }
     case 'dark':
     default:
-      return { ...theme, ...themeModes.dark }
+      return { ...themeModes.dark }
   }
 }
 
@@ -45,9 +40,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
   const themeObject = useMemo(
     () => ({
-      ...baseVariables,
+      ...theme,
       colors: {
-        ...baseVariables.colors,
+        ...theme.colors,
         ...getThemeMode(themeMode).colors,
       },
     }),
@@ -55,10 +50,19 @@ export const ThemeProvider: React.FC = ({ children }) => {
   )
 
   useLayoutEffect(() => {
-    const themeVars = getCSSVariables(themeObject)
-    Object.entries(themeVars).map(([key, value]) => {
-      document.documentElement.style.setProperty(key, value as string)
-    })
+    const themeModeVariables = getThemeMode(themeMode)
+    const themeVars = getCSSVariables(themeModeVariables)
+
+    Object.entries(themeVars).map(
+      ([
+        key,
+        {
+          value: { css },
+        },
+      ]) => {
+        document.documentElement.style.setProperty(key, css)
+      }
+    )
   }, [themeObject, themeMode])
 
   const activeTheme = useMemo(() => getThemeVariables(themeObject), [
@@ -69,7 +73,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
   return (
     <EmotionThemeProvider theme={activeTheme}>
       <ThemeModeContext.Provider value={value}>
-        <GlobalTheme />
+        <GlobalTheme theme={activeTheme} />
         {children}
       </ThemeModeContext.Provider>
     </EmotionThemeProvider>

@@ -1,16 +1,11 @@
-import { Global, css, useTheme } from '@emotion/react'
-import { rgba } from 'emotion-rgba'
+import { Global, css } from '@emotion/react'
 import React from 'react'
 
 import { fluidType } from '../services'
-import { BaseThemeType } from './types.d'
+import { CSSProps, ThemeVariable } from './types.d'
 import { getCSSVariables } from './variables'
 
-export const globalCSS = (theme: BaseThemeType) => css`
-  :root {
-    ${getCSSVariables()}
-  }
-
+const globalStyles = (theme: ThemeVariable) => css`
   *,
   *:after,
   *:before {
@@ -19,21 +14,22 @@ export const globalCSS = (theme: BaseThemeType) => css`
     padding: 0;
   }
   *::selection {
-    background-color: ${rgba(theme.colors.yellow, 0.75)};
-    color: ${theme.colors.background};
+    background-color: ${theme.colors.yellow.css};
+    color: ${theme.colors.primary.css};
   }
   html {
+    ${getCSSVariables()}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     ${fluidType(
-      theme.breakpoints.sm,
-      theme.breakpoints.lg,
-      theme.fonts['min-size'],
-      theme.fonts['max-size']
+      theme.breakpoints.sm.js,
+      theme.breakpoints.lg.js,
+      theme.fonts['min-size'].js,
+      theme.fonts['max-size'].js
     )}
   }
   body {
-    font-family: var(--font-mono);
+    font-family: ${theme.fonts.mono.css};
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -48,9 +44,6 @@ export const globalCSS = (theme: BaseThemeType) => css`
   }
 `
 
-export const GlobalTheme = () => {
-  const theme = useTheme()
-  console.log(theme)
-  const themedGlobalCSS = globalCSS(theme)
-  return <Global styles={themedGlobalCSS} />
-}
+export const GlobalTheme = ({ theme }: CSSProps) => (
+  <Global styles={globalStyles(theme)} />
+)

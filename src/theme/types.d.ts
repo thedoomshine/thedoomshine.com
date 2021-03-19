@@ -1,17 +1,40 @@
-export type Variable = {
-  [key: string]: string
-}
+import { theme } from './variables'
 
-export type ThemeKeys = 'breakpoints' | 'colors' | 'fonts'
+const ThemeGroups = {...Object.keys(theme)}
 
 export type ThemeModeType = 'dark' | 'light' | 'no-preference'
 
-export type BaseThemeType = {
-  [key in ThemeKeys as string]: Variable
+type ValueOf<T> = T[keyof T];
+
+export type Variable = {
+  [key: string]: Variable | string
 }
 
-export type ThemeVariablesType = {
-  theme: Partial<BaseThemeType> | ((outerTheme: BaseThemeType) => BaseThemeType)
+export type BaseVariables = {
+  breakpoints: Variable,
+  colors: Variable,
+  fonts: Variable,
+}
+
+export type JSVariable = {
+  css: string,
+  js: string
+}
+
+export type ThemeVariable = {
+  [key: string]: {
+    [key: string]: string | JSVariable
+  }
+}
+
+export type ThemeType = {
+  breakpoints: ThemeVariable,
+  colors: ThemeVariable,
+  fonts: ThemeVariable,
+}
+
+export type CSSProps = {
+  theme: ThemeType
 }
 
 export type ThemeModeContextType = (

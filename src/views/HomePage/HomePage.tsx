@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { StyledLink } from '../../components'
-import { containerStyles } from './HomePageStyles'
+import { StyledContainer, StyledMain } from './HomePageStyles'
 
 export const HomePage = () => {
   return (
-    <main css={containerStyles}>
-      <section className='main'>
+    <StyledContainer>
+      <StyledMain>
         <div className='content'>
           <h1 className='serif page-intro'>
             Hi, my name is <span className='name'>Morgan</span>&nbsp;
@@ -55,7 +55,7 @@ export const HomePage = () => {
             </ul>
           </div>
         </div>
-      </section>
-    </main>
+      </StyledMain>
+    </StyledContainer>
   )
 }

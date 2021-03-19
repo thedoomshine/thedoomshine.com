@@ -5,10 +5,8 @@ import { HomePage } from './views'
 
 export const App = () => {
   return (
-    <>
-      <ThemeProvider>
-        <HomePage />
-      </ThemeProvider>
-    </>
+    <ThemeProvider>
+      <HomePage />
+    </ThemeProvider>
   )
 }

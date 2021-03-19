@@ -1,13 +1,13 @@
-import { Variable } from '../types.d'
+import { BaseVariables, ThemeVariable, Variable } from '../types.d'
 import { breakpoints } from './breakpoints'
 import { colors } from './colors'
 import { fonts } from './fonts'
 
-export const baseVariables = { breakpoints, colors, fonts }
+export const theme: BaseVariables = { breakpoints, colors, fonts }
 
 const getPrefix = (index: string, key: string) => `--${index}-${key}`
 
-export const getCSSVariables = (object = baseVariables) => {
+export const getCSSVariables = (object = theme): Variable => {
   const cssVariables: Variable = {}
 
   Object.entries(object).map(([index, group]) => {
@@ -19,16 +19,18 @@ export const getCSSVariables = (object = baseVariables) => {
   return cssVariables
 }
 
-export const getThemeVariables = (object = baseVariables) => {
-  const variables: Variable = {}
+export const getThemeVariables = (object = theme) => {
+  const variables: ThemeVariable = {}
 
   Object.entries(object).map(([index, group]) => {
-    Object.keys(group).map(key => {
-      variables[key] = `var(${getPrefix(index, key)})`
+    variables[index] = {}
+    Object.entries(group).map(([key, value]) => {
+      variables[index][key] = {
+        css: `var(${getPrefix(index, key)}, ${value})`,
+        js: value,
+      }
     })
   })
 
   return variables
 }
-
-export const theme = baseVariables

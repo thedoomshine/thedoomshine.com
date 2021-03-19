@@ -31,7 +31,7 @@
       "version": "detect"
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [".d.ts", ".ts", ".tsx"]
     },
     "import/resolver": {
       "node": {
