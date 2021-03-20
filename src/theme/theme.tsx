@@ -4,8 +4,9 @@ import { useColorScheme } from 'use-color-scheme'
 
 import { ThemeModeContext } from './context'
 import { GlobalTheme } from './global'
-import { ThemeModeType } from './types.d'
-import { getCSSVariables, getThemeVariables, theme } from './variables'
+import { ThemeModeType } from './types'
+import { getCSSVariables, getThemeVariables } from './utils'
+import { baseTheme as theme } from './variables'
 
 const themeModes = {
   light: {
@@ -38,7 +39,7 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const { scheme } = useColorScheme()
   const [themeMode, setThemeMode] = useState<ThemeModeType>(scheme)
 
-  const themeObject = useMemo(
+  const activeTheme = useMemo(
     () => ({
       ...theme,
       colors: {
@@ -50,30 +51,20 @@ export const ThemeProvider: React.FC = ({ children }) => {
   )
 
   useLayoutEffect(() => {
-    const themeModeVariables = getThemeMode(themeMode)
-    const themeVars = getCSSVariables(themeModeVariables)
+    const themeModeVars = getThemeMode(themeMode)
+    const themeVars = getCSSVariables(themeModeVars)
 
-    Object.entries(themeVars).map(
-      ([
-        key,
-        {
-          value: { css },
-        },
-      ]) => {
-        document.documentElement.style.setProperty(key, css)
-      }
-    )
-  }, [themeObject, themeMode])
+    Object.entries(themeVars).map(([key, value]) => {
+      document.documentElement.style.setProperty(key, value)
+    })
+  }, [activeTheme, themeMode])
 
-  const activeTheme = useMemo(() => getThemeVariables(themeObject), [
-    themeObject,
-  ])
   const value = useMemo(() => [themeMode, setThemeMode], [themeMode])
 
   return (
-    <EmotionThemeProvider theme={activeTheme}>
+    <EmotionThemeProvider theme={getThemeVariables(activeTheme)}>
+      <GlobalTheme theme={getThemeVariables(activeTheme)} />
       <ThemeModeContext.Provider value={value}>
-        <GlobalTheme theme={activeTheme} />
         {children}
       </ThemeModeContext.Provider>
     </EmotionThemeProvider>

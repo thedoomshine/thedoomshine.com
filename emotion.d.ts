@@ -1,9 +1,7 @@
 import '@emotion/react'
 
-import { ThemeType } from './src/theme/types.d'
+import { GroupType } from './src/theme/types'
 
 declare module '@emotion/react' {
-  export interface Theme {
-    theme: ThemeType
-  }
+  export interface Theme extends GroupType {}
 }

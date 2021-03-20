@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-import { ThemeModeContextType } from './types.d'
+import { ThemeModeContextType } from './types'
 
 export const ThemeModeContext = createContext<ThemeModeContextType>(
   {} as ThemeModeContextType

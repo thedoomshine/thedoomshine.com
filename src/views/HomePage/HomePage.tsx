@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { StyledLink } from '../../components'
-import { StyledContainer, StyledMain } from './HomePageStyles'
+import { StyledContainer, StyledContent, StyledMain } from './HomePageStyles'
 
 export const HomePage = () => {
   return (
     <StyledContainer>
       <StyledMain>
-        <div className='content'>
+        <StyledContent>
           <h1 className='serif page-intro'>
             Hi, my name is <span className='name'>Morgan</span>&nbsp;
             <span className='name'>Ashly</span>,
@@ -28,14 +28,15 @@ export const HomePage = () => {
               <StyledLink href='https://corp.voxmedia.com/'>Vox</StyledLink>
             </p>
             <p>
-              Before that I worked at{' '}
+              Before that I was at{' '}
               <StyledLink href='https://www.the-wing.com/'>The Wing</StyledLink>
             </p>
             <p>
-              And it all started at{' '}
+              And at{' '}
               <StyledLink href='https://www.collemcvoy.com/'>
                 Colle McVoy
               </StyledLink>
+              , too
             </p>
           </div>
 
@@ -54,7 +55,7 @@ export const HomePage = () => {
               </li>
             </ul>
           </div>
-        </div>
+        </StyledContent>
       </StyledMain>
     </StyledContainer>
   )

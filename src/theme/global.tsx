@@ -1,11 +1,14 @@
 import { Global, css } from '@emotion/react'
 import React from 'react'
 
-import { fluidType } from '../services'
-import { CSSProps, ThemeVariable } from './types.d'
-import { getCSSVariables } from './variables'
+import { hexa } from '../services/hexa'
+import { GroupType } from './types'
+import { fluidType, getCSSVariables } from './utils'
 
-const globalStyles = (theme: ThemeVariable) => css`
+const globalStyles = (theme: GroupType) => css`
+  :root {
+    ${getCSSVariables()}
+  }
   *,
   *:after,
   *:before {
@@ -14,11 +17,10 @@ const globalStyles = (theme: ThemeVariable) => css`
     padding: 0;
   }
   *::selection {
-    background-color: ${theme.colors.yellow.css};
     color: ${theme.colors.primary.css};
+    background-color: ${hexa(theme.colors.accent.js, 0.75)};
   }
   html {
-    ${getCSSVariables()}
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     ${fluidType(
@@ -44,6 +46,6 @@ const globalStyles = (theme: ThemeVariable) => css`
   }
 `
 
-export const GlobalTheme = ({ theme }: CSSProps) => (
+export const GlobalTheme = ({ theme }: { theme: GroupType }) => (
   <Global styles={globalStyles(theme)} />
 )
