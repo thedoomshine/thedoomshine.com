@@ -72,10 +72,6 @@ const StyledTextShadow = styled(TextShadow)`
 
   pointer-events: initial;
   color: transparent;
-
-  *::selection {
-    color: transparent;
-  }
 `
 
 const StyledH1 = styled.h1`
