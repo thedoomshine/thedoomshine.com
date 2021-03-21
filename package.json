@@ -79,5 +79,9 @@
       "style": "module",
       "parser": "typescript"
     }
-  }
+  },
+  "puppeteerArgs": [
+    "--no-sandbox",
+    "--disable-setuid-sandbox"
+  ]
 }
