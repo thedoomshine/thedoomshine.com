@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { StyledLink } from '../../components'
+import { StyledLink, ThemeSwitcher } from '../../components'
 import {
   StyledContainer,
   StyledContent,
@@ -14,6 +14,7 @@ import {
 export const HomePage = () => {
   return (
     <StyledContainer>
+      <ThemeSwitcher />
       <StyledMain>
         <StyledContent>
           <StyledPageIntro>

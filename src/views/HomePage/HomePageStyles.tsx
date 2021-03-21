@@ -1,4 +1,5 @@
-import { css } from '@emotion/react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/react'
 import styled from '@emotion/styled'
 import React from 'react'
 import { onlyText } from 'react-children-utilities'
@@ -6,12 +7,32 @@ import { onlyText } from 'react-children-utilities'
 import floralColor from '../../assets/images/floral_color.png'
 import floral from '../../assets/images/floral.png'
 import { hexa } from '../../services'
-import { GroupType } from '../../theme'
+import { GroupType, useThemeMode } from '../../theme'
 
-export const StyledContainer = styled.section`
+interface ContainerProps {
+  className?: string
+}
+
+const Container: React.FC<ContainerProps> = ({ children, className }) => {
+  const [themeMode] = useThemeMode()
+
+  const background = themeMode === 'dark' ? floral : floralColor
+
+  return (
+    <section
+      css={css`
+        background-image: url(${background});
+      `}
+      className={className}
+    >
+      {children}
+    </section>
+  )
+}
+
+export const StyledContainer = styled(Container)`
   align-items: center;
   background-attachment: fixed;
-  background-image: url(${floral});
   background-size: 8rem;
   color: ${({ theme }) => theme.colors.primary.css};
   display: flex;
@@ -63,6 +84,16 @@ const TextShadow: React.FC<ClassProps> = ({ children, className }) => (
 )
 
 const StyledTextShadow = styled(TextShadow)`
+  padding-bottom: 0.33em;
+  position: relative;
+  z-index: 2;
+
+  &::selection {
+    color: ${({ theme }) => theme.colors.background.css};
+  }
+`
+
+const StyledH1 = styled.h1`
   position: absolute;
   left: 0;
   top: 0;
@@ -74,22 +105,10 @@ const StyledTextShadow = styled(TextShadow)`
   color: transparent;
 `
 
-const StyledH1 = styled.h1`
-  padding-bottom: 0.33em;
-  position: relative;
-  z-index: 2;
-
-  &::selection {
-    color: ${({ theme }) => theme.colors.background.css};
-  }
-`
-
 const PageIntro: React.FC<ClassProps> = ({ children, className }) => (
   <div className={className}>
-    <StyledTextShadow className='text-shadow'>
-      {onlyText(children)}
-    </StyledTextShadow>
-    <StyledH1>{children}</StyledH1>
+    <StyledH1>{onlyText(children)}</StyledH1>
+    <StyledTextShadow className='text-shadow'>{children}</StyledTextShadow>
   </div>
 )
 
@@ -110,9 +129,24 @@ export const StyledPageIntro = styled(PageIntro)`
   }
 `
 
-export const StyledName = styled.span`
+export const Name: React.FC<ClassProps> = ({ className, children }) => {
+  const [themeMode] = useThemeMode()
+
+  const background = themeMode === 'dark' ? floralColor : floral
+  return (
+    <span
+      css={css`
+        background-image: url(${background});
+      `}
+      className={className}
+    >
+      {children}
+    </span>
+  )
+}
+
+export const StyledName = styled(Name)`
   background-clip: text;
-  background-image: url(${floralColor});
   background-position: left top;
   background-size: 8rem;
   color: ${({ theme }) => theme.colors.accent.css};
@@ -134,19 +168,21 @@ export const StyledName = styled.span`
 const codeSelect = ({ theme }: { theme: GroupType }) => css`
   transition: 0.02s ease-out background-color;
   *::selection {
-    background-color: ${hexa(theme.colors.accent.js, 0.75)};
-    color: ${theme.colors.background.css};
+    background-color: ${hexa(theme.colors.highlight.js, 0.75)};
+    color: ${theme.colors.shadow.css};
     text-shadow: none;
   }
 `
 
 export const StyledPageInfo = styled.div`
+  font-weight: bold;
   margin-top: 2rem;
 
   ${codeSelect}
 `
 
 export const StyledPageLinks = styled.div`
+  font-weight: bold;
   margin-top: 1rem;
 
   ${codeSelect}

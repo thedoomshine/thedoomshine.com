@@ -5,8 +5,8 @@ import { GroupType } from './types'
 import { fluidType, getCSSVariables, textShadow } from './utils'
 
 const shadow = (theme: GroupType) => css`
-  color: ${theme.colors.background.css};
-  text-shadow: ${textShadow(theme.colors.accent.css, -0.015, 0.2)};
+  color: ${theme.colors.highlight.css};
+  text-shadow: ${textShadow(theme.colors.shadow.css, -0.015, 0.2)};
 `
 
 const globalStyles = (theme: GroupType) => css`
@@ -19,6 +19,8 @@ const globalStyles = (theme: GroupType) => css`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition-property: color, background-color, background-image, border;
+    transition-duration: 0.2s;
   }
   *::selection {
     ${shadow(theme)}

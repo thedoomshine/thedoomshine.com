@@ -4,7 +4,8 @@
     "airbnb",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jsx-a11y/strict"
   ],
   "parser": "@typescript-eslint/parser",
   "env": {
