@@ -80,8 +80,10 @@
       "parser": "typescript"
     }
   },
-  "puppeteerArgs": [
-    "--no-sandbox",
-    "--disable-setuid-sandbox"
-  ]
+  "reactSnap": {
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ]
+  }
 }
