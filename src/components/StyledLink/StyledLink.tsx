@@ -1,14 +1,14 @@
-import { css } from '@emotion/react'
+import styled from '@emotion/styled'
 import React from 'react'
 
-const linkStyles = css`
-  color: $accent;
+const StyledATag = styled.a`
+  color: ${({ theme }) => theme.colors.accent.css};
   cursor: pointer;
   position: relative;
   text-decoration: none;
 
   &::before {
-    background-color: $accent;
+    background-color: ${({ theme }) => theme.colors.accent.css};
     bottom: -2px;
     content: '';
     height: 1px;
@@ -18,8 +18,13 @@ const linkStyles = css`
     width: 0;
   }
 
-  &:hover:before {
-    width: 102%;
+  &:hover,
+  &:focus {
+    border: 0;
+    outline: 0;
+    &::before {
+      width: 102%;
+    }
   }
 `
 
@@ -29,7 +34,7 @@ type StyledLinkType = {
 }
 
 export const StyledLink = ({ href, children }: StyledLinkType) => (
-  <a css={linkStyles} href={href} target='_blank' rel='noreferrer noopener'>
+  <StyledATag href={href} target='_blank' rel='noreferrer noopener'>
     {children}
-  </a>
+  </StyledATag>
 )

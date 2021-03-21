@@ -1,22 +1,29 @@
 import React from 'react'
 
 import { StyledLink } from '../../components'
-import { StyledContainer, StyledContent, StyledMain } from './HomePageStyles'
+import {
+  StyledContainer,
+  StyledContent,
+  StyledMain,
+  StyledName,
+  StyledPageInfo,
+  StyledPageIntro,
+  StyledPageLinks,
+} from './HomePageStyles'
 
 export const HomePage = () => {
   return (
     <StyledContainer>
       <StyledMain>
         <StyledContent>
-          <h1 className='serif page-intro'>
-            Hi, my name is <span className='name'>Morgan</span>&nbsp;
-            <span className='name'>Ashly</span>,
-            <br />
-            and I am a Senior UI Engineer with a passion for accessibility,
-            design, and punk.
-          </h1>
+          <StyledPageIntro>
+            Hi, my name is <StyledName className='name'>Morgan</StyledName>{' '}
+            <StyledName className='name'>Ashly</StyledName>,
+            and&#160;I&#160;am&#160;a&#160;Senior UI Engineer with a passion for
+            accessibility, design, and punk.
+          </StyledPageIntro>
 
-          <div className='page-info'>
+          <StyledPageInfo>
             <p>
               I work at{' '}
               <StyledLink href='https://www.codecademy.com/learn'>
@@ -38,9 +45,9 @@ export const HomePage = () => {
               </StyledLink>
               , too
             </p>
-          </div>
+          </StyledPageInfo>
 
-          <div className='page-links'>
+          <StyledPageLinks>
             <p>
               <strong>You can find me here:</strong>
             </p>
@@ -54,7 +61,7 @@ export const HomePage = () => {
                 <StyledLink href='mailto:morganashly@pm.me'>Email</StyledLink>
               </li>
             </ul>
-          </div>
+          </StyledPageLinks>
         </StyledContent>
       </StyledMain>
     </StyledContainer>

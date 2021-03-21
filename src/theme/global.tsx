@@ -1,24 +1,27 @@
 import { Global, css } from '@emotion/react'
 import React from 'react'
 
-import { hexa } from '../services/hexa'
 import { GroupType } from './types'
-import { fluidType, getCSSVariables } from './utils'
+import { fluidType, getCSSVariables, textShadow } from './utils'
+
+const shadow = (theme: GroupType) => css`
+  color: ${theme.colors.background.css};
+  text-shadow: ${textShadow(theme.colors.accent.css, -0.015, 0.2)};
+`
 
 const globalStyles = (theme: GroupType) => css`
   :root {
     ${getCSSVariables()}
   }
   *,
-  *:after,
-  *:before {
+  *::after,
+  *::before {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
   *::selection {
-    color: ${theme.colors.primary.css};
-    background-color: ${hexa(theme.colors.accent.js, 0.75)};
+    ${shadow(theme)}
   }
   html {
     -webkit-font-smoothing: antialiased;
@@ -39,6 +42,7 @@ const globalStyles = (theme: GroupType) => css`
   h1,
   h2,
   h3 {
+    font-size: inherit;
     letter-spacing: 1px;
   }
   ul {

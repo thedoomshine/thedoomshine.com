@@ -66,3 +66,18 @@ export const fluidType = (
     );
   `
 }
+
+export const textShadow = (color: string, start: number, width: number) => {
+  let output = ''
+  const a = start
+  let x = a
+  let y = a
+  const i = 0.0025
+  const size = width + start
+  while (x <= size + i) {
+    output += `${x}em ${y}em 0 ${color}${size + 0 >= x ? ', ' : ''}`
+    y += i
+    x += i
+  }
+  return output
+}
