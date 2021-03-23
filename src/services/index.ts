@@ -1,0 +1,1 @@
+export { hexa } from './hexa'
