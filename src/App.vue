@@ -9,9 +9,11 @@
         </h1>
 
         <div class="page-info">
-          <p>I work at <styled-link href="https://voxmedia.com/">Vox</styled-link>
-          <p>I used to work at <styled-link href="https://the-wing.com">The Wing</styled-link></p>
-          <p>I also worked at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link></p>
+          <p>I am <styled-link href="mailto:morganashly@pm.me">looking for work</styled-link></p>
+          <p>I worked at <styled-link href="https://codecademy.com">Codecademy</styled-link></p>
+          <p>And at <styled-link href="https://voxmedia.com/">Vox</styled-link></p>
+          <p>Before that, <styled-link href="https://the-wing.com">The Wing</styled-link></p>
+          <p>And started at <styled-link href="https://collemcvoy.com">Colle McVoy</styled-link></p>
         </div>
 
         <div class="page-links">
