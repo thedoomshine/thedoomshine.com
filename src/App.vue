@@ -20,7 +20,6 @@
           <p><strong>You can find me here:</strong></p>
           <ul>
             <li><styled-link href="https://github.com/thedoomshine">Github</styled-link></li>
-            <li><styled-link href="https://twitter.com/thedoomshine">Twitter</styled-link></li>
             <li><styled-link href="mailto:morganashly@pm.me">Email</styled-link></li>
           </ul>
         </div>
@@ -30,17 +29,18 @@
 </template>
 
 <script>
-import Link from './components/Link.vue'
+import StyledLink from './components/StyledLink.vue'
 
 export default {
   name: 'app',
   components: {
-    StyledLink: Link
+    StyledLink
   }
 }
 </script>
 
 <style lang="scss">
+@use "sass:math";
 $black: #161616;
 $grey: #333A3D;
 $accent: #FFE374;
@@ -55,7 +55,7 @@ $min_font: 16px;
 $max_font: 24px;
 
 @function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, ($value * 0 + 1));
 }
 
 @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
