@@ -9,7 +9,7 @@
         </h1>
 
         <div class="page-info">
-          <p>I am <styled-link href="mailto:morganashly@pm.me">looking for work</styled-link></p>
+          <p>I am currently at <styled-link href="https://roll20.net/">Roll20</styled-link></p>
           <p>I worked at <styled-link href="https://codecademy.com">Codecademy</styled-link></p>
           <p>And at <styled-link href="https://voxmedia.com/">Vox</styled-link></p>
           <p>Before that, <styled-link href="https://the-wing.com">The Wing</styled-link></p>
@@ -20,7 +20,6 @@
           <p><strong>You can find me here:</strong></p>
           <ul>
             <li><styled-link href="https://github.com/thedoomshine">Github</styled-link></li>
-            <li><styled-link href="mailto:morganashly@pm.me">Email</styled-link></li>
           </ul>
         </div>
       </div>
